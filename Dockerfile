@@ -1,10 +1,7 @@
-FROM rust AS builder
+FROM rust:slim
 WORKDIR /usr/src/myapp
 COPY . .
 RUN cargo install --path .
-
-FROM debian:buster-slim AS runner
-COPY --from=builder /usr/local/cargo/bin/minesweeper-leaderboard /usr/local/bin/minesweeper-leaderboard
 WORKDIR /srv
 EXPOSE 8000
 ENV ROCKET_ADDRESS=0.0.0.0
