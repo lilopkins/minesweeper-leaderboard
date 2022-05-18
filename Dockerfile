@@ -1,4 +1,4 @@
-FROM rust AS build
+FROM rust:slim
 WORKDIR /usr/src/myapp
 COPY . .
 RUN cargo install --path .
